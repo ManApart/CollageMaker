@@ -4,8 +4,10 @@ private val targetHeight = 1080
 
 fun main() {
     val pictures = parsePictures(targetFolder)
-    val montageMaker = MontageMaker(targetWidth, targetHeight, pictures)
+    val montageMaker = MontageMaker(pictures, targetWidth, targetHeight)
 
-    val montages = montageMaker.buildMontages()
+    montageMaker.montages.forEach {
+        it.writeImage(targetFolder + "output/")
+    }
 }
 
