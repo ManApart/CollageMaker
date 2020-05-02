@@ -3,3 +3,4 @@ testFiles
 .idea
 build
 .gradle
+out/
