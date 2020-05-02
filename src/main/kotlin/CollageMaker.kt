@@ -5,17 +5,17 @@ class CollageMaker(
 ) {
     private val pictures = pictures.toMutableList()
 
-    val montages = buildMontages()
+    val collages = buildCollages()
 
-    private fun buildMontages(): List<Collage> {
+    private fun buildCollages(): List<Collage> {
         val montages = mutableListOf<Collage>()
         while (pictures.isNotEmpty()) {
-            buildMontage(montages)
+            buildCollage(montages)
         }
         return montages
     }
 
-    private fun buildMontage(collages: MutableList<Collage>) {
+    private fun buildCollage(collages: MutableList<Collage>) {
         val montage = Collage(pictures, targetWidth, targetHeight)
         for (picture in montage.pictures.map { it.picture }) {
             pictures.remove(picture)

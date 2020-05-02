@@ -1,3 +1,4 @@
+import java.awt.image.BufferedImage
 import java.io.File
 import javax.imageio.ImageIO
 
@@ -16,8 +17,12 @@ private fun getFiles(path: String): List<File> {
     }
 }
 
-
 fun createPicture(file: File): Picture {
     val image = ImageIO.read(file)
-    return Picture(image.width, image.height, file.path)
+    return Picture(image.width, image.height, image)
+}
+
+fun writeImage(path: String, image: BufferedImage) {
+    val file = File(path)
+    ImageIO.write(image, "png", file)
 }

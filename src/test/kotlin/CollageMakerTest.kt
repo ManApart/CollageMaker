@@ -11,8 +11,8 @@ class CollageMakerTest {
         )
         val maker = CollageMaker(pictures, 10, 10)
 
-        assertEquals(1, maker.montages.size)
-        val montage = maker.montages.first()
+        assertEquals(1, maker.collages.size)
+        val montage = maker.collages.first()
 
         assertEquals(2, montage.pictures.size)
         assertEquals(10, montage.width)
@@ -27,8 +27,8 @@ class CollageMakerTest {
         )
         val maker = CollageMaker(pictures, 10, 10)
 
-        assertEquals(1, maker.montages.size)
-        val montage = maker.montages.first()
+        assertEquals(1, maker.collages.size)
+        val montage = maker.collages.first()
 
         assertEquals(2, montage.pictures.size)
         assertEquals(10, montage.width)
