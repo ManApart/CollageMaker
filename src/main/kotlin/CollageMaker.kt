@@ -16,13 +16,14 @@ class CollageMaker(
     }
 
     private fun buildCollage(collages: MutableList<Collage>) {
-        val montage = Collage(pictures, targetWidth, targetHeight)
-        for (picture in montage.pictures.map { it.picture }) {
+        val collage = Collage(pictures, targetWidth, targetHeight)
+        for (picture in collage.pictures.map { it.picture }) {
             pictures.remove(picture)
             pictures.remove(picture)
         }
-        if (montage.pictures.size > 1) {
-            collages.add(montage)
+        if (collage.pictures.size > 1) {
+            println("Created collage ${collage.width} x ${collage.height}.")
+            collages.add(collage)
         }
     }
 

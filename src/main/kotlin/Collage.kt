@@ -19,10 +19,14 @@ class Collage(
 
     val image = createImage()
 
+    override fun toString(): String {
+        return pictures.map { it.bounds }.joinToString(",")
+    }
+
     private fun buildPictures(pictures: List<Picture>, targetWidth: Int, targetHeight: Int) {
         val targetMaxWidth = max(targetWidth, pictures.maxBy { it.width }?.width ?: 0)
         val targetMaxHeight = max(targetHeight, pictures.maxBy { it.height }?.height ?: 0)
-        return pictures.sortedBy { it.width }.forEach {
+        return pictures.sortedBy { it.area }.reversed().forEach {
             attemptToAddPicture(it, targetMaxWidth, targetMaxHeight)
         }
     }
@@ -34,7 +38,7 @@ class Collage(
             width = max(width, placed.bounds.max.x)
             height = max(height, placed.bounds.max.y)
             pictures.add(placed)
-            rectangles.add(Rectangle())
+            rectangles.add(placed.bounds)
         }
     }
 
