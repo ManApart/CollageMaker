@@ -1,8 +1,6 @@
 private const val targetFolder = "./testFiles/"
-private const val targetWidth = 2000
-private const val targetHeight = 2000
-//private const val targetWidth = 1920
-//private const val targetHeight = 1080
+private const val targetWidth = 1920
+private const val targetHeight = 1080
 
 fun main() {
     val pictures = parsePictures(targetFolder)

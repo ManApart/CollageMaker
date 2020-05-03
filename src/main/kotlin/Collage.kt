@@ -1,7 +1,4 @@
-import java.awt.Graphics2D
 import java.awt.image.BufferedImage
-import java.io.File
-import javax.imageio.ImageIO
 import kotlin.math.max
 
 class Collage(
@@ -23,8 +20,10 @@ class Collage(
     val image = createImage()
 
     private fun buildPictures(pictures: List<Picture>, targetWidth: Int, targetHeight: Int) {
+        val targetMaxWidth = max(targetWidth, pictures.maxBy { it.width }?.width ?: 0)
+        val targetMaxHeight = max(targetHeight, pictures.maxBy { it.height }?.height ?: 0)
         return pictures.sortedBy { it.width }.forEach {
-            attemptToAddPicture(it, targetWidth, targetHeight)
+            attemptToAddPicture(it, targetMaxWidth, targetMaxHeight)
         }
     }
 

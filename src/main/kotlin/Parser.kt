@@ -23,6 +23,8 @@ fun createPicture(file: File): Picture {
 }
 
 fun writeImage(path: String, image: BufferedImage) {
+    val folder = path.substring(0, path.lastIndexOf("/"))
+    File(folder).mkdir()
     val file = File(path)
     ImageIO.write(image, "png", file)
 }
