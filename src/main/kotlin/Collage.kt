@@ -1,3 +1,4 @@
+import java.awt.RenderingHints
 import java.awt.image.BufferedImage
 import kotlin.math.max
 
@@ -76,13 +77,24 @@ class Collage(
         return existingPicture.bounds.max.y + pic.height <= targetHeight && existingPicture.bounds.origin.x + pic.width <= targetWidth
     }
 
-    private fun createImage() : BufferedImage {
+    private fun createImage(): BufferedImage {
         val image = BufferedImage(width, height, BufferedImage.TYPE_INT_RGB)
 
-        val g2d = image.createGraphics()
+        val g = image.createGraphics()
+        g.setRenderingHint(
+            RenderingHints.KEY_INTERPOLATION,
+            RenderingHints.VALUE_INTERPOLATION_BILINEAR
+        )
+
+        //draw a scaled background
+        val largestPic = pictures.first().picture
+        g.drawImage(largestPic.image, 0, 0, width, height, 0, 0, largestPic.width, largestPic.height, null)
+
         pictures.forEach {
-            g2d.drawImage(it.picture.image, it.origin.x, it.origin.y, null)
+            g.drawImage(it.picture.image, it.origin.x, it.origin.y, null)
         }
+
+        g.dispose()
 
         return image
     }
