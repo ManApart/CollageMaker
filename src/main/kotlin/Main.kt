@@ -2,13 +2,14 @@
 private const val targetFolder = "B:/Pictures/Lord of the rings/Paintings/"
 private const val targetWidth = 1920
 private const val targetHeight = 1080
+private const val includeSingleImage = true
 
 fun main() {
     println("Scanning $targetFolder.")
     val pictures = parsePictures(targetFolder)
     println("Found ${pictures.size} pictures.")
 
-    val montageMaker = CollageMaker(pictures, targetWidth, targetHeight)
+    val montageMaker = CollageMaker(pictures, targetWidth, targetHeight, includeSingleImage)
     println("Created ${montageMaker.collages.size} collages.")
 
 

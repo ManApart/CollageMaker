@@ -1,7 +1,8 @@
 class CollageMaker(
     pictures: List<Picture> = listOf(),
     private val targetWidth: Int = 1920,
-    private val targetHeight: Int = 1080
+    private val targetHeight: Int = 1080,
+    private val includeSingleImage: Boolean = false
 ) {
     private val pictures = pictures.toMutableList()
 
@@ -21,7 +22,7 @@ class CollageMaker(
             pictures.remove(picture)
             pictures.remove(picture)
         }
-        if (collage.pictures.size > 1) {
+        if (includeSingleImage || collage.pictures.size > 1) {
             println("Created collage ${collage.width} x ${collage.height}.")
             collages.add(collage)
         }
